@@ -151,11 +151,11 @@ fn read_transfers() {
 
     assert_eq!(
         "stop5",
-        gtfs.get_stop("stop3").unwrap().transfers[0].to_stop_id
+        gtfs.get_stop("stop3").unwrap().transfers[0].to_stop.upgrade().unwrap().id
     );
     assert_eq!(
         "stop2",
-        gtfs.get_stop("stop1").unwrap().transfers[0].to_stop_id
+        gtfs.get_stop("stop1").unwrap().transfers[0].to_stop.upgrade().unwrap().id
     );
     assert_eq!(
         TransferType::Recommended,

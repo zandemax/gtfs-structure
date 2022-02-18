@@ -37,6 +37,7 @@ We kept some names even if they can be confusing (a [Calendar] will be reference
 
 */
 #![warn(missing_docs)]
+#![feature(get_mut_unchecked)]
 
 #[macro_use]
 extern crate derivative;
