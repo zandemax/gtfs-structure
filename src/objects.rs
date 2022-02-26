@@ -305,7 +305,7 @@ impl StopTime {
 }
 
 /// A route is a commercial line (there can be various stop sequences for a same line). See <https://gtfs.org/reference/static/#routestxt>
-#[derive(Debug, Serialize, Deserialize, Default)]
+#[derive(Debug, Serialize, Deserialize, Default, Clone)]
 pub struct Route {
     /// Unique technical (not for the traveller) identifier for the route
     #[serde(rename = "route_id")]
