@@ -269,7 +269,7 @@ impl RawGtfsReader {
 
         for i in 0..archive.len() {
             let archive_file = archive.by_index(i)?;
-            files.push(archive_file.name().to_owned());
+            let name = archive_file.name()?.into_owned();
 
             for gtfs_file in &[
                 "agency.txt",
@@ -294,12 +294,13 @@ impl RawGtfsReader {
                 "ticketing_identifiers.txt",
                 "attributions.txt",
             ] {
-                let path = std::path::Path::new(archive_file.name());
+                let path = std::path::Path::new(&name);
                 if path.file_name() == Some(std::ffi::OsStr::new(gtfs_file)) {
                     file_mapping.insert(gtfs_file, i);
                     break;
                 }
             }
+            files.push(name);
         }
 
         let mut result = RawGtfs {
